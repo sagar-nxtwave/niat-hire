@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NIAT | Meet the NIATians</title>
+  <meta name="description" content="Meet the NIATians - engineers trained for what the market needs next." />
+  <style>
+    :root {
+      --ui-bg: rgba(8, 8, 8, .56);
+      --ui-border: rgba(255, 255, 255, .18);
+      --ui-text: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+    body {
+      margin: 0;
+      background: #050505;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .slide {
+      min-height: 100svh;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide.light { background: #f7f4ee; }
+    .slide.dark  { background: #070303; }
+
+    .frame {
+      position: relative;
+      width: min(100vw, calc(100svh * 16 / 9));
+      height: min(100svh, calc(100vw * 9 / 16));
+      aspect-ratio: 16 / 9;
+      flex: 0 0 auto;
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Transparent clickable area over the CTA in the final Adobe slide */
+    .final-cta {
+      position: absolute;
+      left: 9.45%;
+      top: 67.85%;
+      width: 25.45%;
+      height: 9.5%;
+      border-radius: 999px;
+      text-indent: -9999px;
+      overflow: hidden;
+      outline-offset: 4px;
+    }
+    .final-cta:focus-visible {
+      outline: 3px solid #fff;
+    }
+
+    .deck-ui {
+      position: fixed;
+      z-index: 50;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid var(--ui-border);
+      border-radius: 999px;
+      background: var(--ui-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .deck-ui button {
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      color: var(--ui-text);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .deck-ui button:hover { background: rgba(255,255,255,.20); }
+
+    .counter {
+      min-width: 62px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--ui-text);
+    }
+
+    .hint {
+      position: fixed;
+      z-index: 40;
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 13px;
+      border: 1px solid var(--ui-border);
+      border-radius: 999px;
+      background: var(--ui-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.85);
+      font-size: 12px;
+      transition: opacity .35s ease;
+    }
+    .hint.hidden { opacity: 0; pointer-events: none; }
+
+    @media (max-width: 760px) {
+      html { scroll-snap-type: y proximity; }
+      .slide {
+        min-height: auto;
+        display: block;
+      }
+      .frame {
+        width: 100vw;
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+      .deck-ui {
+        right: 10px;
+        bottom: 10px;
+        transform: scale(.92);
+        transform-origin: bottom right;
+      }
+      .hint { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main id="deck" aria-label="NIAT presentation">
+    <section class="slide dark" data-slide="1"><div class="frame"><img src="assets/slide-01.webp" alt="Meet the NIATians" fetchpriority="high"></div></section>
+    <section class="slide light" data-slide="2"><div class="frame"><img src="assets/slide-02.webp" alt="A new method for building tech talent" loading="eager"></div></section>
+    <section class="slide light" data-slide="3"><div class="frame"><img src="assets/slide-03.webp" alt="The market changes. NIAT changes with it." loading="lazy"></div></section>
+    <section class="slide light" data-slide="4"><div class="frame"><img src="assets/slide-04.webp" alt="One standard method, running across the country" loading="lazy"></div></section>
+    <section class="slide dark" data-slide="5"><div class="frame"><img src="assets/slide-05.webp" alt="The Gold Standard of Engineering Talent" loading="lazy"></div></section>
+    <section class="slide dark" data-slide="6"><div class="frame"><img src="assets/slide-06.webp" alt="NIATians build for problems that matter outside the classroom" loading="lazy"></div></section>
+    <section class="slide light" data-slide="7"><div class="frame"><img src="assets/slide-07.webp" alt="NIATians built for businesses and made revenue" loading="lazy"></div></section>
+    <section class="slide dark" data-slide="8"><div class="frame"><img src="assets/slide-08.webp" alt="The market recognised their ability long before placement season" loading="lazy"></div></section>
+    <section class="slide light" data-slide="9"><div class="frame"><img src="assets/slide-09.webp" alt="First-years competing against the country's best" loading="lazy"></div></section>
+    <section class="slide dark" data-slide="10"><div class="frame"><img src="assets/slide-10.webp" alt="Testimonials from teams that have worked with NIATians" loading="lazy"></div></section>
+    <section class="slide light" data-slide="11"><div class="frame"><img src="assets/slide-11.webp" alt="You can expect more from an NIATian" loading="lazy"></div></section>
+    <section class="slide dark" data-slide="12">
+      <div class="frame">
+        <img src="assets/slide-12.webp" alt="Tell us the engineer you need" loading="lazy">
+        <a class="final-cta" href="mailto:hiring@nxtwave.tech" aria-label="Meet the NIATians">Meet the NIATians</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="hint" id="hint">Scroll or use arrow keys</div>
+
+  <div class="deck-ui" aria-label="Presentation navigation">
+    <button type="button" id="prev" aria-label="Previous slide">&#8593;</button>
+    <div class="counter"><span id="current">01</span> / 12</div>
+    <button type="button" id="next" aria-label="Next slide">&#8595;</button>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const currentLabel = document.getElementById('current');
+    const hint = document.getElementById('hint');
+    let currentIndex = 0;
+
+    function goToSlide(index) {
+      index = Math.max(0, Math.min(slides.length - 1, index));
+      slides[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+      currentIndex = Number(visible.target.dataset.slide) - 1;
+      currentLabel.textContent = String(currentIndex + 1).padStart(2, '0');
+      if (currentIndex > 0) hint.classList.add('hidden');
+    }, { threshold: [0.45, 0.65, 0.85] });
+
+    slides.forEach(slide => observer.observe(slide));
+
+    document.getElementById('prev').addEventListener('click', () => goToSlide(currentIndex - 1));
+    document.getElementById('next').addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    document.addEventListener('keydown', (event) => {
+      if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(currentIndex + 1);
+      }
+      if (['ArrowUp', 'PageUp'].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(currentIndex - 1);
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        goToSlide(0);
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        goToSlide(slides.length - 1);
+      }
+    });
+  </script>
+</body>
+</html>
